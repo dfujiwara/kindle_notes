@@ -5,8 +5,6 @@ type Notes = {
   title: string;
   notes: string[];
 };
-const bookTitleClassName = ".bookTitle";
-const noteTextClassName = ".noteText";
 
 enum Mode {
     title,

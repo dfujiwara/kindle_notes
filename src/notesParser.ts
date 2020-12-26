@@ -17,7 +17,7 @@ class NotesParser {
   title: string = ""
   notes: string[] = []
   mode: Mode = Mode.others
-  currentBuffer: string = ""
+  private currentBuffer: string = ""
 
   onopentag(
     name: string,

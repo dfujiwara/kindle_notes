@@ -16,5 +16,5 @@ export async function record(req: express.Request, res: express.Response): Promi
             return
     }
     console.log(req.body)
-    res.send('hello')
+    res.send({ body: 'hello' })
 }

@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as _ from 'lodash'
 import { exit } from 'process'
 import * as NotesParser from './notesParser'
+import * as NotesUploader from './notesUploader'
 
 const argCount = process.argv.length
 if (argCount != 3) {
@@ -19,11 +20,12 @@ export function watchHandler(event: string, fileName: string): void {
     const absolutePath = path.join(directory, fileName)
     console.log(event, absolutePath)
     try {
-        const results = NotesParser.parseNotes(absolutePath)
-        console.log(results)
+        const notes = NotesParser.parseNotes(absolutePath)
+        NotesUploader.upload(notes)
     } catch (e) {
         console.error(e)
     }
 }
 
+console.log('Starting the watcher')
 fs.watch(directory, _.debounce(watchHandler, 250))

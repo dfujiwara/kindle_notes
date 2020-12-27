@@ -1,10 +1,6 @@
 import * as fs from 'fs'
+import { Notes } from './notes'
 import { Parser } from 'htmlparser2'
-
-type Notes = {
-    title: string
-    notes: string[]
-}
 
 enum Mode {
     title,

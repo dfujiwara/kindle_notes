@@ -15,7 +15,7 @@ if (!fs.existsSync(directory)) {
     exit(1)
 }
 
-export function watchHandler(event: string, fileName: string) {
+export function watchHandler(event: string, fileName: string): void {
     const absolutePath = path.join(directory, fileName)
     console.log(event, absolutePath)
     try {

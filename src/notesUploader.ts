@@ -7,7 +7,7 @@ export async function upload(notes: Notes): Promise<void> {
     const response = await fetch(url, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(notes),
+        body: JSON.stringify({ notes }),
     })
     const json = await response.json()
     console.log(json)

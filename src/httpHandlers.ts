@@ -26,3 +26,20 @@ export async function record(req: express.Request, res: express.Response): Promi
         res.sendStatus(500)
     }
 }
+
+export async function randomSelect(req: express.Request, res: express.Response): Promise<void> {
+    switch (req.method) {
+        case 'GET':
+            break
+        default:
+            res.sendStatus(405)
+            return
+    }
+    try {
+        const note = await storage.randomSelect()
+        res.status(200).send({ note })
+    } catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
+}

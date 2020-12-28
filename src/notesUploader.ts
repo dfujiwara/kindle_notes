@@ -1,7 +1,7 @@
 import { Notes } from './notes'
 import fetch from 'node-fetch'
 
-const url = 'http://localhost:8080'
+const url = 'https://us-central1-df-side-projects.cloudfunctions.net/kindle-notes-record'
 
 export async function upload(notes: Notes): Promise<void> {
     const response = await fetch(url, {

@@ -18,3 +18,12 @@ export async function record(notes: Notes): Promise<Notes> {
     await batch.commit()
     return notes
 }
+
+export async function randomSelect(): Promise<{ title: string; note: string }> {
+    const firestore = new Firestore()
+    const books = await firestore.collection(bookCollectionName).get()
+    const randomlySelectedBook = books.docs[0]
+    const notes = await randomlySelectedBook.ref.collection(notesCollectionName).get()
+    const randomlySelectedNote = notes.docs[0]
+    return { title: randomlySelectedBook.id, note: randomlySelectedNote.get('note') }
+}

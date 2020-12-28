@@ -8,7 +8,8 @@
     "build": "tsc",
     "lint": "eslint src --ext .ts",
     "local-record": "npm run build && functions-framework --source=./dist/httpHandlers.js --target=record",
-    "deploy-record": "npm run build && gcloud functions deploy kindle-notes-record --verbosity debug --entry-point record --runtime nodejs10 --trigger-http"
+    "deploy-record": "npm run build && gcloud functions deploy kindle-notes-record --entry-point record --runtime nodejs10 --trigger-http",
+    "deploy-random-select": "npm run build && gcloud functions deploy kindle-notes-random-select --entry-point randomSelect --runtime nodejs10 --trigger-http"
   },
   "keywords": [],
   "author": "",

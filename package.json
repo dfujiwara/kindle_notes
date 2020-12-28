@@ -2,12 +2,13 @@
   "name": "kindle_notes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/httpHandlers.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "lint": "eslint src --ext .ts",
-    "local-record": "npm run build && functions-framework --source=./dist/httpHandlers.js --target=record"
+    "local-record": "npm run build && functions-framework --source=./dist/httpHandlers.js --target=record",
+    "deploy-record": "npm run build && gcloud functions deploy kindle-notes-record --verbosity debug --entry-point record --runtime nodejs10 --trigger-http"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,6 @@
 import * as express from 'express'
+import * as storage from './storage'
+import { Notes } from './notes'
 
 export async function record(req: express.Request, res: express.Response): Promise<void> {
     switch (req.method) {
@@ -15,6 +17,12 @@ export async function record(req: express.Request, res: express.Response): Promi
             res.sendStatus(400)
             return
     }
-    console.log(req.body)
-    res.send({ body: 'hello' })
+    const notes: Notes = req.body.notes
+    try {
+        await storage.record(notes)
+        res.sendStatus(200)
+    } catch (e) {
+        console.error(e)
+        res.sendStatus(500)
+    }
 }

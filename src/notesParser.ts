@@ -32,12 +32,13 @@ class NotesParser {
     }
 
     ontext(text: string) {
+        const trimmedText = text.trim()
         switch (this.mode) {
             case Mode.title:
-                this.currentBuffer += text
+                this.currentBuffer += trimmedText
                 break
             case Mode.notes:
-                this.currentBuffer += text
+                this.currentBuffer += trimmedText
                 break
             case Mode.others:
                 break

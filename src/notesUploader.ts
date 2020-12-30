@@ -9,6 +9,5 @@ export async function upload(notes: Notes): Promise<void> {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ notes }),
     })
-    const json = await response.json()
-    console.log(json)
+    console.log(response)
 }

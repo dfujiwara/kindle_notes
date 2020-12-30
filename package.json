@@ -4,6 +4,7 @@
   "description": "",
   "main": "./dist/httpHandlers.js",
   "scripts": {
+    "start-watcher": "npm run build && node ./dist/watcher.js ./test_folder",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "lint": "eslint src --ext .ts",

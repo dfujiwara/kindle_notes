@@ -21,7 +21,7 @@ export async function record(notes: Notes): Promise<Notes> {
 
 function selectRandomElement<T>(list: T[]): T {
     if (list.length == 0) {
-        throw 'Error'
+        throw new Error("Random element can't be selected because the list is empty")
     }
     const index = Math.floor(Math.random() * Math.floor(list.length))
     return list[index]

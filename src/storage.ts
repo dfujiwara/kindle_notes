@@ -11,10 +11,16 @@ export async function record(notes: Notes): Promise<Notes> {
     batch.set(docRef, { title: notes.title })
 
     const notesCollection = docRef.collection(notesCollectionName)
+    const notesDocRef = await notesCollection.listDocuments()
+    notesDocRef.forEach((docRef) => {
+        batch.delete(docRef)
+    })
+
     notes.notes.forEach((note) => {
         const noteRef = notesCollection.doc()
         batch.set(noteRef, { note: note })
     })
+    console.log(`Added ${notes.notes.length} entries for the book: ${notes.title}`)
     await batch.commit()
     return notes
 }

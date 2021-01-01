@@ -37,7 +37,7 @@ export async function randomSelect(req: express.Request, res: express.Response):
     }
     try {
         const note = await storage.randomSelect()
-        res.status(200).send({ note })
+        res.send({ note })
     } catch (e) {
         console.error(e)
         res.sendStatus(500)

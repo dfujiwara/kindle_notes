@@ -1,4 +1,3 @@
-import * as fs from 'fs'
 import { Notes } from './notes'
 import { Parser } from 'htmlparser2'
 
@@ -69,13 +68,9 @@ class NotesParser {
     }
 }
 
-export const parseNotes = (path: string): Notes => {
-    if (!fs.existsSync(path)) {
-        throw new Error(`Error, the path ${path} doesn't exist`)
-    }
-    const pathContent = fs.readFileSync(path, 'utf8')
+export const parseNotes = (content: string): Notes => {
     const notesParser = new NotesParser()
     const parser = new Parser(notesParser)
-    parser.parseComplete(pathContent)
+    parser.parseComplete(content)
     return { title: notesParser.title, notes: notesParser.notes }
 }

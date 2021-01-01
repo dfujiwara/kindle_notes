@@ -20,7 +20,8 @@ export function watchHandler(event: string, fileName: string): void {
     const absolutePath = path.join(directory, fileName)
     console.log(event, absolutePath)
     try {
-        const notes = NotesParser.parseNotes(absolutePath)
+        const pathContent = fs.readFileSync(absolutePath, 'utf8')
+        const notes = NotesParser.parseNotes(pathContent)
         NotesUploader.upload(notes)
     } catch (e) {
         console.error(e)

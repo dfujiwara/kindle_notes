@@ -59,6 +59,7 @@ describe('Record HTTP endpoint', () => {
         const request = requestGenerator('POST', 'application/json')
         await record(request, response)
         expect(recordedStatus).toBe(500)
+        expect(mockedStorage.record.mock.calls.length).toBe(1)
     })
 })
 

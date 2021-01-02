@@ -20,8 +20,8 @@ describe('Parsing notes', () => {
     test('should parse title and message with malformed HTML', () => {
         const { title, notes } = NotesParser.parseNotes(titleAndNotesMalformedContent)
         expect(title).toBe('The book title is here')
-        expect(notes.length).toBe(1)
-        expect(notes[0]).toBe('Notes should go here')
+        expect(notes.length).toBe(2)
+        expect(notes).toEqual(['Notes should go here', 'Second notes should go here'])
     })
 })
 
@@ -94,6 +94,9 @@ const titleAndNotesMalformedContent = `
 <h2 class='sectionHeading'>Chapter 1: Chapter for Testing </h2>
 <h3 class='noteHeading'>Highlight (<span class='highlight_blue'>blue</span>) - Location 74</div>
     <div class='noteText'>Notes should go here
+</h3>
+<h3 class='noteHeading'>Highlight (<span class='highlight_blue'>blue</span>) - Location 101</div>
+    <div class='noteText'>Second notes should go here
 </h3>
 </div>
 </body>

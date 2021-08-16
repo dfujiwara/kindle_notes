@@ -7,6 +7,7 @@
     "start-watcher": "npm run build && node ./dist/watcher.js ./test_folder",
     "test": "npm run build && jest",
     "build": "tsc",
+    "build-watcher": "npm run build && docker build -t kindle_notes_watcher .",
     "lint": "eslint src --ext .ts",
     "local-record": "npm run build && functions-framework --source=./dist/httpHandlers.js --target=record",
     "deploy-record": "npm run build && gcloud functions deploy kindle-notes-record --entry-point record --runtime nodejs10 --trigger-http",

@@ -28,5 +28,5 @@ export function watchHandler(event: string, fileName: string): void {
     }
 }
 
-console.log('Starting the watcher')
+console.log(`Starting the watcher for ${directory}`)
 fs.watch(directory, _.debounce(watchHandler, 250))
